@@ -1,24 +1,24 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const Wrapper = styled.div`
     max-width: 1170px;
     margin: 0 auto;
     position: ${({ relative }) => (relative ? 'relative' : null)};
-    height: ${({ height }) => (height ? 'height' : null)};
+    height: ${({ height }) => (height ? height : null)};
 `
 const Flex = styled.div`
     display: flex;
-    width: ${({ width }) => (width ? 'width' : null)};
-    justify-content: ${({ justify }) => (justify ? 'justify' : null)};
-    align-items: ${({ align }) => (align ? 'align' : null)};
-    flex-wrap: ${({ wrap = no - wrap }) => wrap};
-    flex-direction: ${({ direction }) => (direction ? 'direction' : row)};
-    padding: ${({ padding }) => (padding ? 'padding' : null)};
-    margin: ${({ margin }) => (margin ? 'margin' : null)};
-    height: ${({ height }) => (height ? 'height' : null)};
-    flex: ${({ flex }) => (flex ? 'flex' : null)};
-    column-gap: ${({ gap }) => (gap ? 'gap' : null)};
-    row-gap: ${({ gap }) => (gap ? 'gap' : null)};
+    width: ${({ width }) => (width ? width : null)};
+    justify-content: ${({ justify }) => (justify ? justify : 'center')};
+    align-items: ${({ align }) => (align ? align : 'center')};
+    flex-wrap: ${({ wrap = 'no-wrap' }) => wrap};
+    flex-direction: ${({ direction }) => (direction ? direction : 'row')};
+    padding: ${({ padding }) => (padding ? padding : null)};
+    margin: ${({ margin }) => (margin ? margin : null)};
+    height: ${({ height }) => (height ? height : null)};
+    flex: ${({ flex }) => (flex ? flex : null)};
+    column-gap: ${({ gap }) => (gap ? gap : null)};
+    row-gap: ${({ gap }) => (gap ? gap : null)};
 `
 
 const Title = styled.h2`
@@ -27,22 +27,22 @@ const Title = styled.h2`
     font-size: 32px;
     text-transform: uppercase;
     color: #020106;
-    padding: ${({ padding }) => (padding ? 'padding' : null)};
-    margin: ${({ margin }) => (margin ? 'margin' : '0')};
-    height: ${({ height }) => (height ? 'height' : null)};
-    border-left: ${({ withBorder }) => (withBorder ? 'withBorder' : null)};
-    padding-left: ${({ withBorder }) => (withBorder ? 'withBorder' : null)};
+    padding: ${({ padding }) => (padding ? padding : null)};
+    margin: ${({ margin }) => (margin ? margin : '0')};
+    height: ${({ height }) => (height ? height : null)};
+    border-left: ${({ withBorder }) => (withBorder ? '3px solid #E6110C' : null)};
+    padding-left: ${({ withBorder }) => (withBorder ? '15px' : null)};
 `
 
 const SubTitle = styled.h2`
-  font-family: 'Roboto';
+    font-family: Roboto;
     font-weight: 700;
     font-size: 18px;
     text-transform: uppercase;
     color: #020106;
 
-    padding: ${({ padding }) => (padding ? 'padding' : null)};
-    margin: ${({ margin }) => (margin ? 'margin' : '0')};
+    padding: ${({ padding }) => (padding ? padding : null)};
+    margin: ${({ margin }) => (margin ? margin : '0')};
     
     ${({ withBorder }) =>
         withBorder
@@ -63,11 +63,11 @@ const SubTitle = styled.h2`
 
 const Text = styled.p`
     font-family: 'Roboto';
-    font-size: ${({ size }) => (size ? 'size' : '18px')};
-    font-weight: ${({ weight }) => (weight ? 'weight' : '400')};
-    color: ${({ color }) => (color ? 'color' : '#282828')};
-    padding: ${({ padding }) => (padding ? 'padding' : null)};
-    margin: ${({ margin }) => (margin ? 'margin' : '0')};
+    font-size: ${({ size }) => (size ? size : '18px')};
+    font-weight: ${({ weight }) => (weight ? weight : 400)};
+    color: ${({ color }) => (color ? color : '#282828')};
+    padding: ${({ padding }) => (padding ? padding : null)};
+    margin: ${({ margin }) => (margin ? margin : '0')};
 `
 
 const Hr = styled.hr`
@@ -88,5 +88,9 @@ const Button = styled.button`
     justify-content: center;
     align-items: center;
     cursor: pointer;
+    width: ${({ width }) => (width ? width : '470px')};
+    color: ${({ color }) => (color ? color : '#020106')};
+    background: ${({ background }) => (background ? background : '#E6110C')};
+
 `
-export default { Wrapper, Flex, Title, SubTitle, Text, Hr, Button };
+export { Wrapper, Flex, Title, SubTitle, Text, Hr, Button };
