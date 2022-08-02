@@ -1,4 +1,5 @@
 import React from 'react';
+import Provider from './containers/context/context';
 import Header from './containers/header';
 import Product from './containers/product';
 import Order from './containers/order';
@@ -9,13 +10,13 @@ import Footer from './containers/footer';
 
 function App() {
   return (
-    <div>
+    <Provider>
       <Header />
       <Product />
       <Posts />
       <Order />
       <Footer />
-    </div>
+    </Provider>
   );
 }
 

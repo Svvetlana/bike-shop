@@ -1,8 +1,50 @@
 import React from 'react';
 import { Wrapper, Flex, Title, Text, Hr, Button } from 'components/ui';
+import Carousel from 'components/Carousel';
+import ColorPicker from 'components/ColorPicker';
+import SizePicker from 'components/SizePicker';
+import CountPicker from 'components/CountPicker';
+
+import Image1 from 'assets/image-1.png';
+import Image2 from 'assets/image-2.png';
+import Image3 from 'assets/image-3.png';
+import Image4 from 'assets/image-4.png';
+import Image5 from 'assets/image-5.png';
+import Image6 from 'assets/image-6.png';
+import Image7 from 'assets/image-7.png';
+import Image8 from 'assets/image-8.png';
+
+const colors = [
+    {
+        id: 1,
+        color: '#E6110C',
+    },
+    {
+        id: 2,
+        color: 'linear-gradient(180deg, #8B2936 1.47%, #000000 100%)',
+    },
+    {
+        id: 3,
+        color: '#282828',
+    },
+];
+
+const sizes = [
+    {
+        id: 1,
+        label: 'XS (27.5” колеса)',
+    },
+    {
+        id: 2,
+        label: 'S (27.5” колеса)',
+    },
+];
+
+const images = [Image1, Image2, Image3, Image4, Image5, Image6, Image7, Image8];
 
 function Product() {
-    return (
+
+        return (
         <section>
             <Wrapper>
                 <Title withBorder margin='70px 0 30px'>
@@ -20,7 +62,11 @@ function Product() {
                 </Text>
                 
                 <Flex gap='30px'>
-                    <Flex flex={1}>Slider</Flex>
+                    <Flex flex={1}>
+                        <Carousel>
+                            {images.map((image) => (<img src={image} key={image} alt={image} />))}
+                        </Carousel>
+                    </Flex>
                     <Flex
                         width='470px'
                         direction='column'
@@ -53,11 +99,13 @@ function Product() {
                         <Hr />
                         <Flex width='100%' align='flex-start'>
                             <Flex flex={1} justify='flex-start'>
-                                ColorPicker
+                                <ColorPicker items={colors} />
                             </Flex>
-                            <Flex flex={1}>SizePicker</Flex>
+                            <Flex flex={1}>
+                                <SizePicker items={sizes} />
+                                </Flex>
                         </Flex>
-                        CountPicker
+                        <CountPicker />
                         <Button>Оформить заказ</Button>
                     </Flex>
                 </Flex>
