@@ -1,5 +1,6 @@
-import { createContext  } from 'react';
-export default createContext ({
+import { createContext } from 'react';
+
+export default createContext({
     color: 1,
     size: 1,
     count: 1,

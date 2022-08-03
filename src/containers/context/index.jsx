@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Context from './context';
 
-function ContextProvider({children}) {
+function ContextProvider({ children }) {
     const [color, setColor] = useState(1);
     const [size, setSize] = useState(1);
     const [count, setCount] = useState(1);
@@ -11,8 +11,9 @@ function ContextProvider({children}) {
         size,
         count,
         setColor,
-        setSize, 
+        setSize,
         setCount,
     }
     return <Context.Provider value={provideValue}>{children}</Context.Provider>
 }
+export default ContextProvider;
