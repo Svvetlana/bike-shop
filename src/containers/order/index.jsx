@@ -1,6 +1,6 @@
 import React from 'react';
 import { Wrapper, Title, Text } from 'components/ui';
-
+import Form from 'components/Form';
 const Order = () => (
     <section>
         <Wrapper>
@@ -10,6 +10,7 @@ const Order = () => (
             <Text>
                 Успей быть в списке первых райдеров, успевших стать владельцами нового FUEL EX 9.8 и ощути все эмоции, переданные будущей легендой даунхилла. При этом первые райдеры, заказавшие новую модель получат дополнительный пакет поддержки на обслуживания от Trek.
             </Text>
+            <Form></Form>
         </Wrapper>
     </section>
 );
