@@ -22,7 +22,7 @@ const Flex = styled.div`
 `
 
 const Title = styled.h2`
-    font-family: 'Roboto';
+    font-family: 'Roboto', sans-serif;
     font-weight: 700;
     font-size: 32px;
     text-transform: uppercase;
@@ -34,35 +34,33 @@ const Title = styled.h2`
     padding-left: ${({ withBorder }) => (withBorder ? '15px' : null)};
 `
 
-const SubTitle = styled.h2`
-    font-family: Roboto;
-    font-weight: 700;
+const SubTitle = styled.h3`
+    font-family: 'Roboto', sans-serif;
     font-size: 18px;
+    font-weight: bold;
     text-transform: uppercase;
     color: #020106;
-
     padding: ${({ padding }) => (padding ? padding : null)};
     margin: ${({ margin }) => (margin ? margin : '0')};
-    
     ${({ withBorder }) =>
-        withBorder
-            ? `
-            position: relative;
-            &::after {
-                content:'';
-                position: absolute;
-                left: 0;
-                bottom; 10px;
-                width: 45px;
-                height: 3px;
-                background: #E6110C;:
-            }
-        `
+            withBorder
+                ? `
+      position: relative;
+      &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: -10px;
+        width: 45px; 
+        height: 3px; 
+        background: #e6110c;
+      }    
+    `
             : null}
 `
 
 const Text = styled.p`
-    font-family: 'Roboto';
+    font-family: 'Roboto', sans-serif;
     font-size: ${({ size }) => (size ? size : '18px')};
     font-weight: ${({ weight }) => (weight ? weight : 400)};
     color: ${({ color }) => (color ? color : '#282828')};
@@ -78,7 +76,7 @@ const Hr = styled.hr`
 `
 
 const Button = styled.button`
-    font-family: 'Roboto';
+    font-family: 'Roboto', sans-serif;
     font-weight: 700;
     font-size: 18px;
     text-transform: uppercase;

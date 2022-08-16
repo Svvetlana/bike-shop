@@ -10,11 +10,11 @@ opacity: 0;
 `;
 
 export const Label = styled.label`
-font-family: Roboto;
+font-family: Roboto, sans-serif;
 font-size: 18px;
 font-weight: 500;
 color: #282828;
-margin-top: #{({ first }) => (first ? '20px : '24px)};
+margin-top: ${({ first }) => (first ? '20px' : '24px')};
 
 display: inline-flex;
 align-items: center;
@@ -27,4 +27,6 @@ width: 12px;
 margin-right: 16px;
 border-radius: 50%;
 border: 2px white solid;
+box-shadow: 0px 0px 0px 2px #282828;
+background: ${({checked}) => (checked ? '#282828' : '#fff')};
 `;
