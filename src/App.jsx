@@ -9,16 +9,17 @@ import Footer from './containers/footer';
 
 
 function App() {
-  const productRef = useRef(null)
-  const orderRef = useRef(null)
+  const productRef = useRef(null);
+  const orderRef = useRef(null);
 
   const handleProductScroll = () => {
-    productRef.current.scrollIntoView({behavior: 'smooth', block: 'center'})
+    productRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' })
   }
 
   const handleOrderScroll = () => {
-    orderRef.current.scrollIntoView({behavior: 'smooth', block: 'center'})
+    orderRef.current.scrollIntoView({ behavior: 'smooth' })
   }
+
   return (
     <Provider>
       <Header handleProductScroll={handleProductScroll} />
@@ -31,3 +32,4 @@ function App() {
 }
 
 export default App;
+

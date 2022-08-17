@@ -45,10 +45,10 @@ const images = [Image1, Image2, Image3, Image4, Image5, Image6, Image7, Image8];
 const Product = forwardRef(({ handleOrderScroll }, ref) => (
     <section>
         <Wrapper>
-            <Title withBorder margin={'70px 0 30px'}>
+            <Title withBorder margin='70px 0 30px'>
                 ВСТРЕЧАЙ НОВОГО КОРОЛЯ ВЕРШИН
             </Title>
-            <Text margin={'0 0 60px'}>
+            <Text margin='0 0 60px'>
                 Fuel EX 9.8 поднимет вашу поездку на новый уровень с пакетом запчастей, который обеспечивает
                 высочайшую производительность.
                 Так же иы расширили наш размерный ряд, чтобы обеспечить удобство для всех райдеров. Вы можете
@@ -96,7 +96,7 @@ const Product = forwardRef(({ handleOrderScroll }, ref) => (
                         </Flex>
                     </Flex>
                     <CountPicker />
-                    <Button>Оформить заказ</Button>
+                    <Button onClick={handleOrderScroll}>Оформить заказ</Button>
                 </Flex>
             </Flex>
         </Wrapper>

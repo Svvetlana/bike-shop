@@ -2,17 +2,16 @@ import React, { useState, useContext } from 'react';
 import { Flex, Button, Title, Text } from 'components/ui';
 import TextField from 'components/TextField';
 import Context from 'containers/context/context';
-
 import { BorderContainer } from './styled';
-
 import Checkout from 'assets/checkout.png';
 
 const Tabs = ['Оформить заказ', 'Проверить статус заказа']
 
 function Form() {
     const { size, color, count } = useContext(Context);
-
     const [selectedTab, setSelectedTab] = useState(0);
+    const [submitIsDone, setSubmitIsDone] = useState('');
+    const [status, setStatus] = useState();
 
     const [formData, setFormData] = useState({
         name: {
@@ -37,12 +36,55 @@ function Form() {
         value: '',
         error: false,
     })
+
     const onChangeFormData = (key) => (e) => {
         setFormData((prev) => ({ ...prev, [key]: { ...prev[key], value: e.target.value } }))
     }
 
-    const onChangeDelivery =(e) => {
-        setDeliveryNumber((prev) => ({...prev, value: e.target.value}))
+    const onChangeDelivery = (e) => {
+        setDeliveryNumber((prev) => ({ ...prev, value: e.target.value }))
+    }
+
+    const validateFormData = () => {
+        let obj = {...FormData};
+        Object.keys(obj).forEach((key) => obj[key].error = !obj[key].value)
+        setFormData(obj);
+
+        return Object.keys(obj).every(key => !obj[key].error)
+    }
+
+    const onSubmitFormData = (e) => {
+        e.preventDefault();
+        if (validateFormData()) {
+            fetch('http://localhost:3000/bike-request', {
+                method: 'post',
+                headers: {
+                    'Content-type': 'application/json; charset=UTF-8',
+                },
+                body: JSON.stringify({
+                    'name': formData.name.value,
+                    'date': formData.date.value,
+                    'email': formData.email.value,
+                    'phone': formData.phone.value,
+                    size, 
+                    color, 
+                    count
+                })
+            }).then(res => res.json()).then(({id}) => setSubmitIsDone(`Ваш код заказа${id}`));
+        }
+    }
+    const validateDelivery = () => {
+        setDeliveryNumber((prev) => ({...prev, error: !prev.value}))
+    }
+    const onSubmitDelivery = (e) => {
+        e.preventDefault();
+        if(validateDelivery()) {
+            fetch(`http://localhost:3000/bike-request/${deliveryNumber.value}`)
+            .then(res => {
+                setStatus(deliveryNumber.value ? res.status : '')
+            })
+        }
+
     }
     return (
         <BorderContainer>
@@ -64,7 +106,7 @@ function Form() {
                 <Flex padding='60px 80px' direction='column'>
                     <img src={Checkout} alt='' />
                     <Title margin='30px 0 100px'>Fuel EX 9.8 </Title>
-                    <form>
+                    <form onSubmit={onSubmitFormData}>
                         <TextField
                             placeholder='ФИО'
                             errorLabel='Пожалуйста, введите Ваше ФИО.'
@@ -94,14 +136,14 @@ function Form() {
                             value={formData['date'].value}
                             onChange={onChangeFormData('date')}
                         />
-                        <Button type='submit'>Оформить заказ</Button>
+                        {submitIsDone || <Button type='submit'>Оформить заказ</Button>} 
                     </form>
                 </Flex>
             )}
             {selectedTab === 1 && (
                 <Flex padding='60px 80px' direction='column'>
-                    <Title margin='30px 0 100px'>Введите номер заказа, что бы узнать о его статусе:</Title>
-                    <form action=''>
+                    <Text margin='30px 0 100px'>Введите номер заказа, что бы узнать о его статусе:</Text>
+                    <form action='' onSubmit={onSubmitDelivery}>
                         <TextField
                             placeholder='Номер заказа'
                             errorLabel='Пожалуйста, введите код заказа.'
@@ -110,11 +152,14 @@ function Form() {
                             onChange={onChangeDelivery}
                         />
                         <Button type='submit'>Получить информацию</Button>
+                        <p>
+                            {({
+                                200: 'Заказ ожидает отправки',
+                                400: 'Неверный код заказа',
+                            }[status] || '')}
+                        </p>
                     </form>
-
                 </Flex>)}
-
-
         </BorderContainer>
     );
 }

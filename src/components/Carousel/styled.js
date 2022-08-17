@@ -11,8 +11,8 @@ export const SlideBtn = styled.button`
     position: absolute;
     top: 50%;
     transform: translateY(-50%)
-        ${({rotate}) => (rotate ? 'rotate(180deg);' : null)};
-        ${({rotate}) => (rotate ? 'right: 13px;' : 'left: 13px;')};
+        ${({ rotate }) => (rotate ? 'rotate(180deg);' : null)};
+        ${({ rotate }) => (rotate ? 'right: 13px;' : 'left: 13px;')};
     `;
 
 export const Arrow = styled.div`
@@ -49,7 +49,7 @@ export const ContainerItem = styled.div`
 
     display: flex;
     justify-content: center;
-    align-items: stretch;
+    // align-items: center;
     `;
 
 export const CarouselTrack = styled.div`
@@ -59,7 +59,7 @@ export const CarouselTrack = styled.div`
     transition: 0.2s linear transform;
 
     ${({ transform }) =>
-    transform
-    ? `transform: translateX(${transform});`
-    : `transform: translateX(0);`}
+        transform
+            ? `transform: translateX(${transform});`
+            : `transform: translateX(0);`}
     `;
