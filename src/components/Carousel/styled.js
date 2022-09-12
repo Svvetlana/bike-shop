@@ -49,7 +49,7 @@ export const ContainerItem = styled.div`
 
     display: flex;
     justify-content: center;
-    // align-items: center;
+    align-items: center;
     `;
 
 export const CarouselTrack = styled.div`
